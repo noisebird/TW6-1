@@ -48,7 +48,7 @@ public class EmployeeController {
         return JSONArray.fromObject(employeeService.getAllEmployees()).toString();
     }
 //    更新员工列表
-    @RequestMapping(value="update",method = RequestMethod.PUT)
+    @RequestMapping(value="update",method = RequestMethod.POST)
     public String updateEmployeeList(@ModelAttribute  Employee employee){
         if (employeeService.updateEmployee(employee)) {
             return "更新员工成功";
