@@ -29,21 +29,36 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public boolean addEmployee(Employee employee) {
+        int size = map.size();
+        map.put(employee.getId(), employee);
+        if (map.size() > size) {
+            return true;
+        }
         return false;
     }
 
     @Override
     public boolean deleteEmployee(int id) {
+        if (map.containsKey(id)) {
+            map.remove(id);
+            return true;
+        }
         return false;
     }
 
     @Override
     public Employee getEmployeeById(int id) {
-        return null;
+        Employee employee = map.get(id);
+        return employee;
     }
 
     @Override
     public boolean updateEmployee(Employee employee) {
+        int key = employee.getId();
+        if (map.containsKey(key)) {
+            map.put(key, employee);
+            return true;
+        }
         return false;
     }
 
